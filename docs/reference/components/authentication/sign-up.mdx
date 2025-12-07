@@ -355,7 +355,25 @@ All props are optional.
   Defaults to `"auto"`.
 
   ---
+  import { Clerk } from '@clerk/clerk-js'
 
+// Initialize Clerk with your Clerk Publishable Key
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+const clerk = new Clerk(clerkPubKey)
+await clerk.load()
+
+document.getElementById('app').innerHTML = `
+  <div id="sign-up"></div>
+`
+
+const signUpDiv = document.getElementById('sign-up')
+
+clerk.mountSignUp(signUpDiv)
+
+// ...
+
+clerk.unmountSignUp(signUpDiv)
   - `path`
   - `string`
 
